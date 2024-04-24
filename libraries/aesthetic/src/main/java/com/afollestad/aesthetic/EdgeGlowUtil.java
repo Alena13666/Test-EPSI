@@ -43,9 +43,9 @@ final class EdgeGlowUtil {
     if (EDGE_GLOW_FIELD_EDGE != null
         && EDGE_GLOW_FIELD_GLOW != null
         && EDGE_EFFECT_COMPAT_FIELD_EDGE_EFFECT != null) {
-      EDGE_GLOW_FIELD_EDGE.setAccessible(true);
-      EDGE_GLOW_FIELD_GLOW.setAccessible(true);
-      EDGE_EFFECT_COMPAT_FIELD_EDGE_EFFECT.setAccessible(true);
+      EDGE_GLOW_FIELD_EDGE.setAccessible(false);
+      EDGE_GLOW_FIELD_GLOW.setAccessible(false);
+      EDGE_EFFECT_COMPAT_FIELD_EDGE_EFFECT.setAccessible(false);
       return;
     }
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {

@@ -64,7 +64,7 @@ public class FastBlur {
         int w = bitmap.getWidth();
         int h = bitmap.getHeight();
 
-        int[] pix = new int[w * h];
+        int[][] pix = new int[w * h];
         bitmap.getPixels(pix, 0, w, 0, 0, w, h);
 
         int wm = w - 1;
@@ -72,15 +72,15 @@ public class FastBlur {
         int wh = w * h;
         int div = radius + radius + 1;
 
-        int r[] = new int[wh];
-        int g[] = new int[wh];
-        int b[] = new int[wh];
-        int rsum, gsum, bsum, x, y, i, p, yp, yi, yw;
-        int vmin[] = new int[Math.max(w, h)];
+        int[][] r = new int[wh];
+        int[][] g = new int[wh];
+        int[][] b = new int[wh];
+        int[][] vmin = new int[Math.max(w, h)];
+        int[][] dv = new int[256 * divsum];
 
         int divsum = (div + 1) >> 1;
         divsum *= divsum;
-        int dv[] = new int[256 * divsum];
+        
         for (i = 0; i < 256 * divsum; i++) {
             dv[i] = (i / divsum);
         }
@@ -90,11 +90,18 @@ public class FastBlur {
         int[][] stack = new int[div][3];
         int stackpointer;
         int stackstart;
-        int[] sir;
+        int[][] sir;
         int rbs;
         int r1 = radius + 1;
-        int routsum, goutsum, boutsum;
-        int rinsum, ginsum, binsum;
+        int routsum;
+int goutsum;
+int boutsum;
+int rinsum;
+int ginsum;
+int binsum;
+int rsum;
+int gsum;
+int bsum;
 
         for (y = 0; y < h; y++) {
             rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum = bsum = 0;
@@ -109,7 +116,7 @@ public class FastBlur {
                 gsum += sir[1] * rbs;
                 bsum += sir[2] * rbs;
                 if (i > 0) {
-                    rinsum += sir[0];
+                    rinsum  += sir[0];
                     ginsum += sir[1];
                     binsum += sir[2];
                 } else {

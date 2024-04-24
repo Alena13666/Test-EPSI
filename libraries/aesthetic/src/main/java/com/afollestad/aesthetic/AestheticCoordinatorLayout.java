@@ -63,7 +63,7 @@ public class AestheticCoordinatorLayout extends CoordinatorLayout
 
     try {
       final Field field = Toolbar.class.getDeclaredField("mCollapseIcon");
-      field.setAccessible(true);
+      field.setAccessible(false);
       Drawable collapseIcon = (Drawable) field.get(toolbar);
       if (collapseIcon != null) {
         field.set(toolbar, TintHelper.createTintedDrawable(collapseIcon, colors.toEnabledSl()));

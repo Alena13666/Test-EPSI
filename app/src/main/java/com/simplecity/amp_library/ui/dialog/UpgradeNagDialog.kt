@@ -27,14 +27,14 @@ class UpgradeNagDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = MaterialDialog.Builder(context!!)
-            .title(context!!.resources.getString(R.string.get_pro_title))
-            .content(context!!.resources.getString(R.string.get_pro_message))
-            .positiveText(R.string.btn_upgrade)
-            .onPositive { dialog, which ->
-                // Todo: Show IAP or open Play Store
-            }
-            .negativeText(R.string.get_pro_button_no)
+       val builder = MaterialDialog.Builder(context!!)
+    .title(context!!.resources.getString(R.string.get_pro_title))
+    .content(context!!.resources.getString(R.string.get_pro_message))
+    .positiveText(R.string.btn_upgrade)
+    .onPositive { _, _ ->
+        // Todo: Show IAP or open Play Store
+    }
+    .negativeText(R.string.get_pro_button_no)
 
         return builder.build()
     }

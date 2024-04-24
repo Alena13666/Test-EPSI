@@ -64,12 +64,11 @@ public class EmptyView extends BaseViewModel<EmptyView.ViewHolder> {
         return new ViewHolder(createView(parent));
     }
 
-    public static class ViewHolder extends BaseViewHolder {
-
+    public static class ViewHolder extends BaseViewHolder<Object> {
         public ViewHolder(View itemView) {
             super(itemView);
         }
-
+    
         @Override
         public String toString() {
             return "EmptyView.ViewHolder";

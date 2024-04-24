@@ -145,9 +145,9 @@ class SearchFragment :
 
         setupContextualToolbar()
 
-        val searchItem = toolbar!!.menu.findItem(R.id.search)
-        searchItem.expandActionView()
-        searchView = searchItem.actionView as SearchView
+       val searchItem = toolbar!!.menu.findItem(R.id.search)
+searchItem.expandActionView()
+ 
 
         searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem): Boolean {

@@ -158,16 +158,18 @@ public class InputMethodManagerLeaks {
         final Method finishInputLockedMethod;
         final Method focusInMethod;
         try {
+            
             mServedViewField = InputMethodManager.class.getDeclaredField("mServedView");
-            mServedViewField.setAccessible(true);
+            mServedViewField.setAccessible(false); 
             mHField = InputMethodManager.class.getDeclaredField("mServedView");
-            mHField.setAccessible(true);
+            mHField.setAccessible(false);
             finishInputLockedMethod = InputMethodManager.class.getDeclaredMethod("finishInputLocked");
-            finishInputLockedMethod.setAccessible(true);
+            finishInputLockedMethod.setAccessible(false);
             focusInMethod = InputMethodManager.class.getDeclaredMethod("focusIn", View.class);
-            focusInMethod.setAccessible(true);
-        } catch (NoSuchMethodException | NoSuchFieldException unexpected) {
-            Log.e("IMMLeaks", "Unexpected reflection exception", unexpected);
+            focusInMethod.setAccessible(false);
+            mServedViewField.setAccessible(false);
+        } catch (NoSuchFieldException | SecurityException e) {
+            e.printStackTrace();
             return;
         }
 

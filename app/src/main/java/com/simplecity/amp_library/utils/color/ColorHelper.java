@@ -67,9 +67,10 @@ public class ColorHelper {
 
         double[] lab = new double[3];
         ColorUtilsFromCompat.colorToLAB(findFg ? fg : bg, lab);
-
-        double low = 0, high = lab[0];
-        final double a = lab[1], b = lab[2];
+        double low = 0;
+        double high = lab[0];
+        final double a = lab[1];
+        final double b = lab[2];
         for (int i = 0; i < 15 && high - low > 0.00001; i++) {
             final double l = (low + high) / 2;
             if (findFg) {
@@ -105,7 +106,8 @@ public class ColorHelper {
         int g = Color.green(color);
         int b = Color.blue(color);
 
-        int low = startAlpha, high = 255;
+        int low = startAlpha;
+        int high = 255;
         for (int i = 0; i < 15 && high - low > 0; i++) {
             final int alpha = (low + high) / 2;
             fg = Color.argb(alpha, r, g, b);
@@ -139,7 +141,8 @@ public class ColorHelper {
         float[] hsl = new float[3];
         ColorUtilsFromCompat.colorToHSL(findFg ? fg : bg, hsl);
 
-        float low = hsl[2], high = 1;
+        float low = hsl[2];
+        float high = 1;
         for (int i = 0; i < 15 && high - low > 0.00001; i++) {
             final float l = (low + high) / 2;
             hsl[2] = l;
@@ -546,7 +549,9 @@ public class ColorHelper {
 
             final int hueSegment = (int) h / 60;
 
-            int r = 0, g = 0, b = 0;
+            int r = 0;
+            int g = 0;
+            int b = 0 ;
 
             switch (hueSegment) {
                 case 0:
@@ -628,7 +633,8 @@ public class ColorHelper {
             final float min = Math.min(rf, Math.min(gf, bf));
             final float deltaMaxMin = max - min;
 
-            float h, s;
+            float h;
+            float s;
             float l = (max + min) / 2f;
 
             if (max == min) {

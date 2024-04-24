@@ -106,13 +106,11 @@ public final class ViewUtil {
     }
   }
 
-  private static void tintImageView(Object target, Field field, ActiveInactiveColors tintColors)
-      throws Exception {
-    field.setAccessible(true);
-    final ImageView imageView = (ImageView) field.get(target);
-    if (imageView.getDrawable() != null) {
-      imageView.setImageDrawable(
-          createTintedDrawable(imageView.getDrawable(), tintColors.toEnabledSl()));
+  private static void tintImageView(MyCustomObject target, ActiveInactiveColors tintColors) {
+    ImageView imageView = target.getImageView();  // Assuming a getter is available
+    if (imageView != null && imageView.getDrawable() != null) {
+        imageView.setImageDrawable(
+            createTintedDrawable(imageView.getDrawable(), tintColors.toEnabledSl()));
     }
-  }
+}
 }

@@ -16,7 +16,15 @@ public class HttpClient {
 
     public OkHttpClient okHttpClient;
 
-    public LastFmService lastFmService;
+    private LastFmService lastFmService;
+
+    public LastFmService getLastFmService() {
+        return lastFmService;
+    }
+    
+    public void setLastFmService(LastFmService lastFmService) {
+        this.lastFmService = lastFmService;
+    }
 
     public static final String TAG_ARTWORK = "artwork";
 

@@ -11,6 +11,7 @@ import io.reactivex.annotations.Nullable;
 import java.io.Serializable;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+ 
 
 public class Playlist implements Serializable {
 
@@ -37,7 +38,7 @@ public class Playlist implements Serializable {
     public boolean canSort = true;
 
     // These are the Playlist rows that we will retrieve.
-    public static final String[] PROJECTION = new String[] {
+    protected  static final String[] PROJECTION = new String[] {
             MediaStore.Audio.Playlists._ID,
             MediaStore.Audio.Playlists.NAME
     };

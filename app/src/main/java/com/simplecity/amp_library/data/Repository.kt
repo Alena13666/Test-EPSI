@@ -43,13 +43,9 @@ interface Repository {
         fun getSongs(genre: Genre): Observable<List<Song>>
     }
 
-    interface AlbumsRepository {
-
-        /**
-         * Returns a continuous List of [Album]s
-         */
-        fun getAlbums(): Observable<List<Album>>
-    }
+   fun interface PlaylistsFetcher {
+    fun getPlaylists(): Observable<List<Playlist>>
+}
 
     interface AlbumArtistsRepository {
 

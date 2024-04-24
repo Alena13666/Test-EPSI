@@ -38,10 +38,11 @@ class ChangelogDialog : DialogFragment() {
         val webView = customView.findViewById<WebView>(R.id.webView)
         webView.setBackgroundColor(ContextCompat.getColor(context!!, android.R.color.transparent))
 
-        val checkBox = customView.findViewById<CheckBox>(R.id.checkbox)
-        checkBox.isChecked = settingsManager.showChangelogOnLaunch
-        checkBox.setOnCheckedChangeListener { buttonView, isChecked -> settingsManager.showChangelogOnLaunch = isChecked }
-
+       val checkBox = customView.findViewById<CheckBox>(R.id.checkbox)
+checkBox.isChecked = settingsManager.showChangelogOnLaunch
+checkBox.setOnCheckedChangeListener { _, isChecked -> 
+    settingsManager.showChangelogOnLaunch = isChecked 
+}
         val progressBar = customView.findViewById<ProgressBar>(R.id.progress)
 
         webView.webViewClient = object : WebViewClient() {

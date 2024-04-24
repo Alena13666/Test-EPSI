@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.io.File;
 
 public class FileBrowser {
 
@@ -107,7 +108,8 @@ public class FileBrowser {
             FolderObject parentObject = new FolderObject();
             parentObject.fileType = FileType.PARENT;
             parentObject.name = FileHelper.PARENT_DIRECTORY;
-            parentObject.path = FileHelper.getPath(currentDir) + "/" + FileHelper.PARENT_DIRECTORY;
+            // Use File constructor to handle path concatenation
+            parentObject.path = new File(currentDir, FileHelper.PARENT_DIRECTORY).getPath();
             folderObjects.add(0, parentObject);
         }
 

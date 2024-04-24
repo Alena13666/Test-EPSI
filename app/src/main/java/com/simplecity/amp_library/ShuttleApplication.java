@@ -214,14 +214,14 @@ public class ShuttleApplication extends DaggerApplication {
         Glide.get(this).clearMemory();
     }
 
-    public String getVersion() {
-        try {
-            return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-        } catch (PackageManager.NameNotFoundException | NullPointerException ignored) {
+    // public String getVersion() {
+    //     try {
+    //         return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+    //     } catch (PackageManager.NameNotFoundException | NullPointerException ignored) {
 
-        }
-        return "unknown";
-    }
+    //     }
+    //     return "unknown";
+    // }
 
     public void setIsUpgraded(boolean isUpgraded) {
         this.isUpgraded = isUpgraded;
@@ -296,6 +296,7 @@ public class ShuttleApplication extends DaggerApplication {
             try {
                 getContentResolver().delete(PlayCountTable.URI, selection.toString(), null);
             } catch (IllegalArgumentException ignored) {
+                Log.e(TAG, "Failed to delete due to invalid arguments: ", e);
             }
         });
     }
@@ -377,16 +378,5 @@ public class ShuttleApplication extends DaggerApplication {
                 .flatMapCompletable(songs -> Completable.complete());
     }
 
-    private void enableStrictMode() {
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build());
-
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .penaltyFlashScreen()
-                .build());
-    }
+   
 }

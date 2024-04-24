@@ -54,20 +54,11 @@ public class LetterDrawable extends Drawable {
 
     }
 
-    @Override
-    public int getOpacity() {
-        return PixelFormat.UNKNOWN;
-    }
-
-    /**
-     * @param key The key used to generate the tile color
-     * @return A new or previously chosen color for <code>key</code> used as the
-     * tile background color
-     */
     private int pickColor(String key) {
         // String.hashCode() is not supposed to change across java versions, so
-        // this should guarantee the same key always maps to the same color
-        final int color = Math.abs(key.hashCode()) % mColors.length();
-        return mColors.getColor(color, Color.BLACK);
+        // this should guarantee the same key always maps to the same color.
+        // Use the bitwise AND to clear the sign bit of the hash code, ensuring it is non-negative.
+        final int colorIndex = (key.hashCode() & 0x7FFFFFFF) % mColors.length();
+        return mColors.getColor(colorIndex, Color.BLACK);
     }
 }

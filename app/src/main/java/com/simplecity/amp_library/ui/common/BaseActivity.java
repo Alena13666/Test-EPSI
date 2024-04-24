@@ -144,18 +144,19 @@ public abstract class BaseActivity extends AestheticActivity implements
     }
 
     void bindService() {
-        if (!bindInFlight) {
-            bindInFlight = true;
-            MusicServiceConnectionUtils.bindToService(
-                    getLifecycle(),
-                    this,
-                    analyticsManager,
-                    this, serviceToken -> {
-                        token = serviceToken;
-                        this.bindInFlight = false;
-                    }
-            );
+        if (bindInFlight) {
+            return;  // Return early if a bind operation is already in flight
         }
+        bindInFlight = true;
+        MusicServiceConnectionUtils.bindToService(
+            getLifecycle(),
+            this,
+            analyticsManager,
+            this, serviceToken -> {
+                token = serviceToken;
+                bindInFlight = false;  // Note: 'this' is optional here
+            }
+        );
     }
 
     void unbindService() {

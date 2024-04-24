@@ -40,13 +40,13 @@ public class TypefaceManager {
 
             switch (typeface) {
                 case SANS_SERIF:
-                    result = Typeface.create("sans-serif", Typeface.NORMAL);
+                    result = Typeface.create(SANS_SERIF, Typeface.NORMAL);
                     break;
                 case SANS_SERIF_MEDIUM:
-                    result = Typeface.create("sans-serif-medium", Typeface.NORMAL);
+                    result = Typeface.create(SANS_SERIF_MEDIUM, Typeface.NORMAL);
                     break;
                 case SANS_SERIF_LIGHT:
-                    result = Typeface.create("sans-serif-light", Typeface.NORMAL);
+                    result = Typeface.create(SANS_SERIF_LIGHT, Typeface.NORMAL);
                     break;
                 default:
                     result = Typeface.createFromAsset(context.getAssets(), "fonts/" + typeface);
